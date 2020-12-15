@@ -437,33 +437,41 @@ public int MovementSpeed = 1;
 ```
 
 #### Commenting
-Comments should be used to describe intention, algorithmic overview, and/or logical flow.
-It would be ideal if from reading the comments alone someone other than the author could understand a function’s intended behavior and general operation.
+Comments should be used sparingly. The idea of this, is that code should be well formated, and members be appropriately named and seperated.
 
-While there are no minimum comment requirements and certainly some very small routines need no commenting at all, it is hoped that most routines will have comments reflecting the programmer’s intent and approach.
+If there is a specific algorithmic overview, and/or logical flow, refer the developer to a README.md file in a comment.
 
 ##### Comment Style
 Place the comment on a separate line, not at the end of a line of code.
+
+Ensure comments consider the row 80 limit.
 
 Begin comment text with an uppercase letter.
 
 End comment text with a period.
 
-Insert one space between the comment delimiter (//) and the comment text, as shown in the following example.
+The /// (three slashes) style of comment tags should be used brief explaination of a method may be required. Eg in the sitation when the methods name is insufficant. Insert one space between the comment delimiter (///) and the comment text. In some editors this will style the code differently to a double slash (//) comment.
 
-The // (two slashes) style of comment tags should be used in most situations. Where ever possible, place comments above the code instead of beside it. Here are some examples:
+The // (two slashes) style of commenting should be used to temporarily comment out code for debug purposes.
+
+The blocked //* ...  style of comment should only be used to comment out large blocks of code. An explaination of why the code is blocked out should be added to make the intention clear.
+
+Here are some examples:
 ```
-        // Sample comment above a variable.
-        private int _myInt = 5;
+        /// Sample comment above a variable.
+        private int counter = 5;
+
+        /// This counter has been refactored into X class
+        //private int legacyCounter;
 ```
 
 #### Regions
-The `#region` directive enables you to collapse and hide sections of code in CSharp files. The ability to hide code selectively makes your files more manageable and easier to read. 
-```
-#region "This is the code to be collapsed"
-    Private components As System.ComponentModel.Container
-#endregion
-```
+The `#region` directive are counter productive to good coding standards, espetically in business logic classes.
+
+THEY SHOULD BE AVOIDED.
+
+The argument is that these ability to hide code selectively makes your files more manageable and easier to read. 
+However, the counter argument is that if code needs to be hidden from a class, when ask if it should be in that class at all? It indicates that the code likely needs seperating into its own class.
 
 #### Spacing
 Do use a single space after a comma between function arguments.
